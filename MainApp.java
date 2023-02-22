@@ -21,7 +21,7 @@ public class MainApp {
         int count = 0;
         StringBuilder builder = new StringBuilder();
         while (text.contains("()")) {
-            text = text.replaceAll("\\(\\)", "");
+            text = text.replaceFirst("\\(\\)", "");
             count += 2;
             builder.append("()");
         }
@@ -51,11 +51,11 @@ public class MainApp {
         } else {
             if (leftRem > 0) {
                 array[count] = '(';
-                addBracketsToList(list, leftRem - 1, rightRem, array, ++count);
+                addBracketsToList(list, leftRem - 1, rightRem, array, count + 1);
             }
             if (rightRem > leftRem) {
                 array[count] = ')';
-                addBracketsToList(list, leftRem, rightRem - 1, array, ++count);
+                addBracketsToList(list, leftRem, rightRem - 1, array, count + 1);
             }
         }
     }
